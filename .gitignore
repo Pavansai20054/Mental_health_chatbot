@@ -1,0 +1,9 @@
+output1.png
+HACKSTORM - PS - 3RD YEAR.docx
+mental_health_frontend/TECH T-REX.pptx
+*.pptx
+~$*node_modules/
+mental_health_frontend/node_modules/
+backend/backend/
+backendchatapp/__pycache__
+backend/chatapp\/migrations

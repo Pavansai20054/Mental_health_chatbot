@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mood Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #FF4E50, #FC913A); /* Gradient Background */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .button {
+            display: block;
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .mood-range {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            height: 15px;
+            margin-top: 10px;
+        }
+        .mood-range input[type="range"] {
+            width: 100%;
+            background: transparent;
+            height: 15px;
+            border-radius: 5px;
+            outline: none;
+        }
+        .mood-range input[type="range"]::-webkit-slider-runnable-track {
+            background: #4CAF50;
+        }
+        .mood-range input[type="range"]::-webkit-slider-thumb {
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Track Your Mood</h1>
+        <p>On a scale from 1 to 10, how are you feeling today?</p>
+        <div class="mood-range">
+            <input type="range" min="1" max="10" step="1" id="mood-range" />
+        </div>
+        <p class="mt-4 text-xl" id="mood-value">Mood: 5</p>
+        <button class="button" onclick="submitMood()">Submit Mood</button>
+    </div>
+
+    <script>
+        const moodRange = document.getElementById('mood-range');
+        const moodValue = document.getElementById('mood-value');
+
+        moodRange.addEventListener('input', function() {
+            moodValue.textContent = `Mood: ${moodRange.value}`;
+        });
+
+        function submitMood() {
+            const mood = moodRange.value;
+            alert(`Your mood has been recorded as: ${mood}`);
+            // You can make a POST request to your backend API to save the mood value.
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #11998E, #38EF7D); /* Green gradient background */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .button {
+            display: block;
+            width: 80%; /* Adjusted width */
+            margin: 10px auto; /* Centered buttons */
+            background: #FF6B6B; /* Lighter red */
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .button:hover {
+            background: #FF8787; /* Even lighter red on hover */
+            transform: translateY(-5px); /* Slight upward movement */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        /* Fade-in animation for the body */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Slide-up animation for the container */
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Emergency Services</h1>
+        <p>Click to call the respective emergency service.</p>
+        
+        <a href="tel:112" class="button">📞 Universal Emergency (112)</a>
+        <a href="tel:100" class="button">🚔 Police (100)</a>
+        <a href="tel:101" class="button">🔥 Fire Brigade (101)</a>
+        <a href="tel:102" class="button">🚑 Ambulance (102)</a>
+        <a href="tel:108" class="button">🩺 Medical Emergency (108)</a>
+        <a href="tel:1091" class="button">👩‍⚖️ Women Helpline (1091)</a>
+        <a href="tel:1098" class="button">👧 Child Helpline (1098)</a>
+        <a href="tel:18005990019" class="button">🧠 Mental Health (KIRAN - 1800-599-0019)</a>
+        <a href="tel:1930" class="button">🛑 Cyber Crime (1930)</a>
+        <a href="tel:14567" class="button">🔒 Senior Citizen Helpline (14567)</a>
+        <a href="tel:155260" class="button">💰 Banking Fraud (155260)</a>
+    </div>
+</body>
+</html>

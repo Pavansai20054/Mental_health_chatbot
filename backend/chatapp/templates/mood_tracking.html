@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mood Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #11998E, #38EF7D);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .button {
+            display: block;
+            width: 100%;
+            background: #38EF7D;
+            color: white;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #2ECC71;
+        }
+        .mood-selection {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .mood-btn {
+            font-size: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .mood-btn:hover {
+            transform: scale(1.2);
+        }
+        .mood-history {
+            margin-top: 20px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .mood-entry {
+            padding: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Track Your Mood</h1>
+        <p>Select an emoji that best represents your mood today:</p>
+        <div class="mood-selection" id="mood-selection">
+            <button class="mood-btn" onclick="submitMood('😃')">😃</button>
+            <button class="mood-btn" onclick="submitMood('😊')">😊</button>
+            <button class="mood-btn" onclick="submitMood('😐')">😐</button>
+            <button class="mood-btn" onclick="submitMood('😔')">😔</button>
+            <button class="mood-btn" onclick="submitMood('😢')">😢</button>
+        </div>
+        <p class="mt-4 text-xl" id="mood-value">Mood: 😐</p>
+        <div class="mood-history" id="mood-history">
+            <h2 class="text-lg font-bold">Mood History</h2>
+            <div id="history-list"></div>
+        </div>
+        <div>
+            <button class="button" onclick="clearHistory()">Clear History</button>
+        </div>
+        <div>
+            <h2 class="text-lg font-bold mt-4">Mood Statistics</h2>
+            <p id="mood-stats"></p>
+        </div>
+    </div>
+    
+    <script>
+        const moodValue = document.getElementById('mood-value');
+        const historyList = document.getElementById('history-list');
+        const moodStats = document.getElementById('mood-stats');
+        let moodHistory = JSON.parse(localStorage.getItem('moodHistory')) || [];
+
+        // Function to update the history in the UI
+        function updateHistory() {
+            historyList.innerHTML = '';
+            moodHistory.forEach(entry => {
+                const div = document.createElement('div');
+                div.classList.add('mood-entry');
+                div.textContent = `${entry.date} - Mood: ${entry.mood}`;
+                historyList.prepend(div);
+            });
+        }
+
+        // Function to track the mood
+        function submitMood(mood) {
+            const date = new Date().toLocaleDateString();  // Only storing the date part
+            moodValue.textContent = `Mood: ${mood}`;
+            const entry = { date, mood };
+            moodHistory.push(entry);
+            localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
+            updateHistory();
+        }
+
+        // Function to clear history
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear the mood history?')) {
+                moodHistory = [];
+                localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
+                updateHistory();
+            }
+        }
+
+        // Function to display mood statistics
+        function displayMoodStats() {
+            if (moodHistory.length === 0) {
+                moodStats.textContent = 'No mood data available.';
+                return;
+            }
+
+            const moodCount = moodHistory.reduce((acc, entry) => {
+                acc[entry.mood] = (acc[entry.mood] || 0) + 1;  // Count each mood's occurrence
+                return acc;
+            }, {});
+
+            const mostFrequentMood = Object.keys(moodCount).reduce((a, b) => moodCount[a] > moodCount[b] ? a : b);
+            moodStats.textContent = `Most Frequent Mood: ${mostFrequentMood} (${moodCount[mostFrequentMood]} times)`;
+        }
+
+        // Call displayMoodStats when the page loads
+        displayMoodStats();
+        
+        // Initialize history on page load
+        updateHistory();
+    </script>
+</body>
+</html>

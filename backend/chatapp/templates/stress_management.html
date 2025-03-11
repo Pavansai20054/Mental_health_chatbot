@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Stress Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #11998E, #38EF7D);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            animation: fadeInBody 1s ease-out;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInContainer 1.5s ease-out forwards;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            background: #38EF7D;
+            color: white;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background: #2ECC71;
+            transform: scale(1.05); /* Button scale on hover */
+        }
+
+        .breathing-container {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+            animation: fadeInBreathing 1s ease-out forwards;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background: #38EF7D;
+            border-radius: 50%;
+            margin: auto;
+            animation: breathing 4s ease-in-out infinite;
+        }
+
+        @keyframes breathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(2); }
+        }
+
+        @keyframes fadeInBody {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInBreathing {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .breath-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 15px;
+            animation: textFadeIn 1s ease-out;
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .videos {
+            max-width: 1000px;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            animation: fadeInContainer 1.5s ease-out forwards;
+        }
+
+        .videos h2 {
+            margin-bottom: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Stress Management Tips</h1>
+        <p>Here are some techniques that can help you manage stress:</p>
+        <div class="tips-list">
+            <ul>
+                <li>🧘‍♂️ Practice mindfulness meditation daily</li>
+                <li>🏃‍♀️ Engage in regular physical activity</li>
+                <li>💤 Ensure adequate and quality sleep</li>
+                <li>🌿 Take short breaks throughout the day</li>
+                <li>💬 Talk to a friend or family member about your feelings</li>
+                <li>🎶 Listen to calming music or sounds</li>
+            </ul>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="startBreathingExercise()">Start Breathing Exercise</button>
+        </div>
+    </div>
+
+    <div class="breathing-container" id="breathingContainer">
+        <div class="circle" id="breathingCircle"></div>
+        <div class="breath-text" id="breathText">Inhale...</div>
+    </div>
+
+    <div class="videos">
+        <h2 class="text-xl font-bold">Helpful Videos</h2>
+        <div class="video-grid">
+            <iframe src="https://www.youtube.com/embed/wfDTp2GogaQ" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ZToicYcHIOU" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/O-6f5wQXSu8" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/aNXKjGFUlMs" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/NkRlFsARVaM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/3z7x8mgnF3o" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/UfcAVejslrU" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/1vx8iUvfyCY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Er0PztB5QEk" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/2FCO0R6CfdE" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/odADwWzHR24" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/pvv2VaFTEUA" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function startBreathingExercise() {
+            const breathingContainer = document.getElementById("breathingContainer");
+            const breathText = document.getElementById("breathText");
+            breathingContainer.style.display = "block";
+
+            let cycle = 0;
+            function breathingCycle() {
+                if (cycle >= 3) {
+                    breathingContainer.style.display = "none";
+                    return;
+                }
+                breathText.textContent = "Inhale...";
+                setTimeout(() => {
+                    breathText.textContent = "Exhale...";
+                    setTimeout(() => {
+                        cycle++;
+                        breathingCycle();
+                    }, 4000);
+                }, 4000);
+            }
+            breathingCycle();
+        }
+    </script>
+</body>
+</html>
