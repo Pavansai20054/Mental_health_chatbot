@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 logger = logging.getLogger(__name__)
 
 # Gemini API Key
-GENAI_API_KEY = "AIzaSyA_g4e3DxYJTsO44BjzA6jTeJa0KmKDA8o"  # SECURITY WARNING: Move this to an environment variable
+GENAI_API_KEY = "GEMINI_API_KEY"  # SECURITY WARNING: Move this to an environment variable
 
 @api_view(['GET'])
 def get_mood_logs(request):
