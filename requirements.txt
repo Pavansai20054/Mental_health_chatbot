@@ -1,0 +1,9 @@
+Django
+djangorestframework
+psycopg2-binary
+gunicorn
+whitenoise
+django-environ
+djangorestframework-simplejwt
+django-cors-headers
+django-webpack-loader
