@@ -83,7 +83,7 @@ npm start
 ## 📞 Contact
 📧 **Wagmare Sanjana**: wagmaresanjana5@gmail.com  
 🔗 **LinkedIn**: [Wagmare Sanjana](https://www.linkedin.com/in/wagmare-sanjana)  
-🔗 **GitHub**: [Pavansai's GitHub](https://github.com/WAGMARESANJANA)  
+🔗 **GitHub**: [Sanjana's GitHub](https://github.com/WAGMARESANJANA)  
 
 📧 **B. Ruchilasya**: bobbiliruchilasya@gmail.com  
 🔗 **LinkedIn**: [Bobbili Ruchilasya](https://www.linkedin.com/in/ruchilasya-bobbili-055407292/)   
